@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "run-persistence": "json-server --watch contacts.json & npm run serve"
+    "run-persistence": "json-server --watch db.json & npm run serve"
   },
   "dependencies": {
     "core-js": "^2.6.5",
