@@ -2,7 +2,7 @@
   <div class="list">
     <ul>
       <li v-for="contact in contactList">
-        {{ contact.first_name }}
+        <contactContainer v-bind:contact="contact" />
       </li>
     </ul>
   </div>
@@ -10,9 +10,13 @@
 
 <script>
 import axios from 'axios';
+import ContactContainer from '../fragments/ContactContainer';
 
 export default {
   name: 'ContactList',
+  components: {
+    ContactContainer
+  },
   methods: {
     retrieveContacts() {
       axios.get('http://localhost:3000/contacts')
@@ -41,7 +45,6 @@ ul {
   padding: 0;
 }
 li {
-  display: inline-block;
   margin: 0 10px;
 }
 a {
