@@ -31,7 +31,18 @@ props: ["contact"]
 <style scoped>
 .wrapper {
   min-width: 320px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
+  margin: 5px;
+
+    background-color: rgba(245, 222, 179, 0.5);
+
+}
+.pic {
+    border: 1px solid black;
+    min-width: 100px;
+}
+.contact-info {
+    text-align: right;
 }
 </style>>

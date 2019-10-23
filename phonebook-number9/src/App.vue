@@ -10,18 +10,26 @@
 </template>
 
 <style>
-#app {
 @import url('https://fonts.googleapis.com/css?family=Source+Serif+Pro&display=swap');
+ @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-  font-family: 'Source Serif Pro', serif;
+#app {
+  background: url('assets/img/ivan-gromov.jpg');
+  /* font-family: 'Source Serif Pro', serif; */
+    font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   max-width: 760px;
   min-width: 320px;
+  min-height: 480px;
+
+  -webkit-box-shadow: 1px 1px 51px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 1px 1px 51px 0px rgba(0,0,0,0.75);
+box-shadow: 1px 1px 51px 0px rgba(0,0,0,0.75);
 }
 
 #app-wrap {
