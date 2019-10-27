@@ -14,7 +14,7 @@
  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 #app {
-  background: url('assets/img/ivan-gromov.jpg');
+  background: rgba(143,188,148,0.5);
   /* font-family: 'Source Serif Pro', serif; */
     font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -30,6 +30,10 @@
   -webkit-box-shadow: 1px 1px 51px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 1px 1px 51px 0px rgba(0,0,0,0.75);
 box-shadow: 1px 1px 51px 0px rgba(0,0,0,0.75);
+
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
 }
 
 #app-wrap {

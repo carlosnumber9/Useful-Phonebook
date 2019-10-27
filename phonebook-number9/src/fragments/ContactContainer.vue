@@ -35,7 +35,13 @@ props: ["contact"]
   display: flex;
   margin: 5px;
 
-    background-color: rgba(245, 222, 179, 0.5);
+    background-color: #c5e99b;
+
+    -webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+
+border: 1px solid #548687;
 
 }
 .pic {
