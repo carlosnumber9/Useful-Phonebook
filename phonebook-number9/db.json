@@ -1,25 +1,89 @@
 {
-    "contacts": [
-        {
-            "id": 1,
-            "first_name": "Carlos",
-            "last_name": "Pinedo",
-            "address": "C/ Cebreros 103, 4ºD 28011 Madrid",
-            "phone_number": "686637099"
-        },
-        {
-            "id": 2,
-            "first_name": "Carlos",
-            "last_name": "Pinedo",
-            "address": "C/ Cebreros 103, 4ºD 28011 Madrid",
-            "phone_number": "686637099"
-        },
-        {
-            "id": 3,
-            "first_name": "Carlos",
-            "last_name": "Pinedo",
-            "address": "C/ Cebreros 103, 4ºD 28011 Madrid",
-            "phone_number": "686637099"
-        }
-    ]
+  "contacts": [
+    {
+      "id": "defd746b-9ec3-5625-90a2-e77506eb833d",
+      "fullName": "Pam Yates",
+      "firstName": "Pam",
+      "lastName": "Yates",
+      "gender": "Male",
+      "birthday": "Jul 6th, 1958",
+      "age": 61,
+      "avatar": "https://api.adorable.io/avatars/200/Pam-Yates",
+      "address": "9130 West Jones St., Wooster, OH 44691",
+      "zip": "44691",
+      "state": "OH",
+      "phone": "(384) 481-9824",
+      "email": "hihrewwis@tealugot.dm",
+      "twitter": "@oti",
+      "ssn": "579-58-9212"
+    },
+    {
+      "id": "27548f21-5330-5a8f-9489-0655ae5e2316",
+      "fullName": "Benny Simmons",
+      "firstName": "Benny",
+      "lastName": "Simmons",
+      "gender": "Male",
+      "birthday": "Nov 5th, 1966",
+      "age": 52,
+      "avatar": "https://api.adorable.io/avatars/200/Benny-Simmons",
+      "address": "56 Logan Circle, East Lansing, MI 48823",
+      "zip": "48823",
+      "state": "MI",
+      "phone": "(381) 367-9796",
+      "email": "oweso@ezovne.ni",
+      "twitter": "@if",
+      "ssn": "567-50-6536"
+    },
+    {
+      "id": "a7240757-4371-5d90-afd7-1b5754741bf3",
+      "fullName": "Erna Dobson",
+      "firstName": "Erna",
+      "lastName": "Dobson",
+      "gender": "Female",
+      "birthday": "Feb 13th, 1989",
+      "age": 30,
+      "avatar": "https://api.adorable.io/avatars/200/Erna-Dobson",
+      "address": "27 Summer Dr., Chicago, IL 60621",
+      "zip": "60621",
+      "state": "IL",
+      "phone": "(415) 306-4707",
+      "email": "lupo@nacnor.cn",
+      "twitter": "@tum",
+      "ssn": "441-62-9649"
+    },
+    {
+      "id": "dfd248f2-7592-56b2-90b0-4424a6e414ec",
+      "fullName": "Ray Harris",
+      "firstName": "Ray",
+      "lastName": "Harris",
+      "gender": "Female",
+      "birthday": "Mar 7th, 1979",
+      "age": 40,
+      "avatar": "https://api.adorable.io/avatars/200/Ray-Harris",
+      "address": "280 Sunbeam Road, Westford, MA 01886",
+      "zip": "01886",
+      "state": "MA",
+      "phone": "(985) 674-2835",
+      "email": "sov@biw.hu",
+      "twitter": "@jasbiz",
+      "ssn": "699-81-0194"
+    },
+    {
+      "id": "3d07ff00-f24b-5c16-948a-cf031da2cb73",
+      "fullName": "Maureen Bennett",
+      "firstName": "Maureen",
+      "lastName": "Bennett",
+      "gender": "Female",
+      "birthday": "Aug 21st, 1981",
+      "age": 38,
+      "avatar": "https://api.adorable.io/avatars/200/Maureen-Bennett",
+      "address": "958 Branch Street, Lexington, NC 27292",
+      "zip": "27292",
+      "state": "NC",
+      "phone": "(463) 306-5561",
+      "email": "zuvjo@pazko.us",
+      "twitter": "@cof",
+      "ssn": "991-22-9475"
+    }
+  ]
 }
