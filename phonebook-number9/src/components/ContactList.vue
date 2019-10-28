@@ -15,6 +15,7 @@ import randomGenerator from 'random-profile-generator';
 import ContactContainer from '../fragments/ContactContainer';
 
 const JSON_SERVER_ADDRESS = 'http://localhost:8000';
+const DEFAULT_CONTACT_LIST_SIZE = 5;
 
 export default {
   name: 'ContactList',
@@ -30,7 +31,7 @@ export default {
     generateRandomUsers() {
       var i;
       var randomUsers = [];
-        for(i=0; i<5; i++) {
+        for(i=0; i<DEFAULT_CONTACT_LIST_SIZE; i++) {
           randomUsers.push(randomGenerator.profile());
         }
         return randomUsers;
@@ -39,7 +40,6 @@ export default {
     var dbData = []; 
     await axios.get(JSON_SERVER_ADDRESS + '/contacts')
     .then(response => dbData = response.data);
-        // await axios.delete(JSON_SERVER_ADDRESS + '/contacts');
      dbData.map(async contactToRemove => {
        await axios.delete(JSON_SERVER_ADDRESS + '/contacts/' + contactToRemove.id)
         .then(response => console.log(response));
@@ -53,9 +53,9 @@ export default {
   },
   created: function() {
     this.clearDatabase();
-    // var newRandomUsers = this.generateRandomUsers();
-    // this.addToDatabase(newRandomUsers);
-    // this.contacts = newRandomUsers;
+    var newRandomUsers = this.generateRandomUsers();
+    this.addToDatabase(newRandomUsers);
+    this.contacts = newRandomUsers;
   }
 }
 </script>
