@@ -13,8 +13,12 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Serif+Pro&display=swap');
  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
+body {
+  background: url(assets/img/wood.jpg);
+}
+
 #app {
-  background: rgba(143,188,148,0.5);
+  background: rgba(143,188,148,0.8);
   /* font-family: 'Source Serif Pro', serif; */
     font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;

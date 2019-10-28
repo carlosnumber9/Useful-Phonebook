@@ -45,9 +45,7 @@ border: 1px solid #548687;
 
 }
 .pic {
-    /* border: 1px solid black; */
     min-width: 100px;
-    border: 1px solid #548687;
 }
 .contact-avatar {
     max-width: 80px;
