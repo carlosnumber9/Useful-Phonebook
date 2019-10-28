@@ -2,11 +2,10 @@
 
 <div class="wrapper">
 <div class="pic">
-
+<img class="contact-avatar" v-bind:src="contact.avatar"/>
 </div>
 <div class="contact-info">
-{{ contact.first_name }}
-{{ contact.last_name }}
+<p class="contact-name"> {{ contact.firstName }} </p>
 </div>
 </div>
 
@@ -31,6 +30,7 @@ props: ["contact"]
 <style scoped>
 .wrapper {
   min-width: 320px;
+  min-height: 40px;
   /* border: 1px solid red; */
   display: flex;
   margin: 5px;
@@ -45,10 +45,20 @@ border: 1px solid #548687;
 
 }
 .pic {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     min-width: 100px;
+    border: 1px solid #548687;
 }
-.contact-info {
-    text-align: right;
+.contact-avatar {
+    max-width: 80px;
+    margin: 5px;
+
+    -webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+}
+
+.contact-name {
+    float: right;
 }
 </style>>
