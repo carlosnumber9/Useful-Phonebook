@@ -16,63 +16,66 @@ import ContactContainer from '../fragments/ContactContainer';
 
 const JSON_SERVER_ADDRESS = 'http://localhost:8000';
 const DEFAULT_CONTACT_LIST_SIZE = 5;
+const DEFAULT_ITEMS_PER_PAGE = Math.abs(Math.random() * (0 - 10));
 
 export default {
-  name: 'ContactList',
-  components: {
-    ContactContainer
-  },
-  data() {
-    return {
-      contacts: []
-    }
-  },
-  methods: {
-    generateRandomUsers() {
-      var i;
-      var randomUsers = [];
-        for(i=0; i<DEFAULT_CONTACT_LIST_SIZE; i++) {
-          randomUsers.push(randomGenerator.profile());
+    name: 'ContactList',
+    components: {
+        ContactContainer
+    },
+    data() {
+        return {
+            contacts: []
         }
-        return randomUsers;
-  },
-  async clearDatabase() {
-    var dbData = []; 
-    await axios.get(JSON_SERVER_ADDRESS + '/contacts')
-    .then(response => dbData = response.data);
-     dbData.map(async contactToRemove => {
-       await axios.delete(JSON_SERVER_ADDRESS + '/contacts/' + contactToRemove.id)
-        .then(response => console.log(response));
-      });
-  },
-  addToDatabase(newContacts) {
-    newContacts.map(newContact => {
-      axios.post(JSON_SERVER_ADDRESS + '/contacts', newContact);
-    });
-  }
-  },
-  created: function() {
-    this.clearDatabase();
-    var newRandomUsers = this.generateRandomUsers();
-    this.addToDatabase(newRandomUsers);
-    this.contacts = newRandomUsers;
-  }
+    },
+    methods: {
+        generateRandomUsers() {
+            var i;
+            var randomUsers = [];
+            for (i = 0; i < DEFAULT_CONTACT_LIST_SIZE; i++) {
+                randomUsers.push(randomGenerator.profile());
+            }
+            return randomUsers;
+        },
+        async clearDatabase() {
+            var dbData = [];
+            await axios.get(JSON_SERVER_ADDRESS + '/contacts')
+                .then(response => dbData = response.data);
+            dbData.map(async contactToRemove => {
+                await axios.delete(JSON_SERVER_ADDRESS + '/contacts/' + contactToRemove.id)
+                    .then(response => console.log(response));
+            });
+        },
+        addToDatabase(newContacts) {
+            newContacts.map(newContact => {
+                axios.post(JSON_SERVER_ADDRESS + '/contacts', newContact);
+            });
+        }
+    },
+    created: function () {
+        this.clearDatabase();
+        var newRandomUsers = this.generateRandomUsers();
+        this.addToDatabase(newRandomUsers);
+        this.contacts = newRandomUsers;
+    }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
-  margin: 40px 0 0;
+    margin: 40px 0 0;
 }
+
 ul {
-  list-style-type: none;
-  padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
+
 li {
-  margin: 0 10px;
+    margin: 0 10px;
 }
+
 a {
-  color: #42b983;
+    color: #42b983;
 }
 </style>
