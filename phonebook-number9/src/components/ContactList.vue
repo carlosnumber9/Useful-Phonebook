@@ -1,12 +1,14 @@
 <template>
-  <div class="list">
+<div class="list">
     <ul>
-      <!-- eslint-disable-next-line -->
-      <li v-for="contact in contacts">
-        <contactContainer v-bind:contact="contact"> </contactContainer>
-      </li>
+        <!-- eslint-disable-next-line -->
+        <li :v-for="contact in contacts">
+            <router-link :to="{ name: 'contact', params: {id: contact.id } }">
+                <contactContainer v-bind:contact="contact"> </contactContainer>
+            </router-link>
+        </li>
     </ul>
-  </div>
+</div>
 </template>
 
 <script>
