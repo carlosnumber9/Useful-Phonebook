@@ -42,7 +42,7 @@ a {
     min-width: 320px;
     min-height: 480px;
 
-    border: 1px solid gray;
+    border: 1px solid white;
 
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;

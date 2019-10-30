@@ -1,12 +1,15 @@
 <template>
-  <div class="list">
+<div class="list">
+    <p class="more-info"> Click on a contact to see more info. </p>
     <ul>
-      <!-- eslint-disable-next-line -->
-      <li v-for="contact in contacts">
-        <contactContainer v-bind:contact="contact"> </contactContainer>
-      </li>
+        <!-- eslint-disable-next-line -->
+        <li v-for="contact in contacts">
+            <router-link :to="{ name: 'contact', params: {id: contact.id } }">
+                <contactContainer v-bind:contact="contact"> </contactContainer>
+            </router-link>
+        </li>
     </ul>
-  </div>
+</div>
 </template>
 
 <script>
@@ -25,7 +28,8 @@ export default {
     },
     data() {
         return {
-            contacts: []
+            contacts: [],
+            generateContacts: true
         }
     },
     methods: {
@@ -47,16 +51,28 @@ export default {
             });
         },
         addToDatabase(newContacts) {
-            newContacts.map(newContact => {
-                axios.post(JSON_SERVER_ADDRESS + '/contacts', newContact);
+            newContacts.map(async newContact => {
+                await axios.post(JSON_SERVER_ADDRESS + '/contacts', newContact);
             });
+        },
+        async getContacts() {
+            var dbData;
+            await axios.get(JSON_SERVER_ADDRESS + '/contacts')
+                .then(response => dbData = response.data);
+            return dbData;
+        },
+        async init(generateContacts) {
+            if (generateContacts) {
+                // await this.clearDatabase();
+                // var newRandomUsers = this.generateRandomUsers();
+                // await this.addToDatabase(newRandomUsers);
+            }
+            this.contacts = await this.getContacts();
         }
     },
-    created: function () {
-        this.clearDatabase();
-        var newRandomUsers = this.generateRandomUsers();
-        this.addToDatabase(newRandomUsers);
-        this.contacts = newRandomUsers;
+    created: async function () {
+        this.init(this.generateContacts);
+        if (this.generateContacts) this.generateContacts = false;
     }
 }
 </script>
@@ -77,5 +93,15 @@ li {
 
 a {
     color: #42b983;
+}
+
+.list:hover > .more-info {
+  opacity: 1;
+  transition: 1s ease-in-out;
+}
+
+.more-info {
+  opacity: 0;
+    transition: 1s ease-in-out;
 }
 </style>
