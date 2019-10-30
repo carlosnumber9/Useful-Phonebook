@@ -7,8 +7,14 @@
             <router-link :to="{ name: 'contact', params: {id: contact.id } }">
                 <contactContainer v-bind:contact="contact"> </contactContainer>
             </router-link>
+            <div class="new-contact-form">
+              
+            </div>
         </li>
     </ul>
+    <div class="buttons">
+        <a class="button" @click="init"> Generate new random contacts </a>
+    </div>
 </div>
 </template>
 
@@ -28,8 +34,7 @@ export default {
     },
     data() {
         return {
-            contacts: [],
-            generateContacts: true
+            contacts: []
         }
     },
     methods: {
@@ -62,17 +67,15 @@ export default {
             return dbData;
         },
         async init(generateContacts) {
-            if (generateContacts) {
-                // await this.clearDatabase();
-                // var newRandomUsers = this.generateRandomUsers();
-                // await this.addToDatabase(newRandomUsers);
-            }
+            await this.clearDatabase();
+            var newRandomUsers = this.generateRandomUsers();
+            await this.addToDatabase(newRandomUsers);
             this.contacts = await this.getContacts();
         }
     },
     created: async function () {
-        this.init(this.generateContacts);
-        if (this.generateContacts) this.generateContacts = false;
+        this.contacts = await this.getContacts();
+
     }
 }
 </script>
@@ -95,13 +98,32 @@ a {
     color: #42b983;
 }
 
-.list:hover > .more-info {
-  opacity: 1;
-  transition: 1s ease-in-out;
+.list:hover>.more-info {
+    opacity: 1;
+    transition: 1s ease-in-out;
 }
 
 .more-info {
-  opacity: 0;
+    opacity: 0;
     transition: 1s ease-in-out;
+}
+
+.button {
+  display: inline-block;
+  cursor: pointer;
+  color: black;
+  padding: 4px;
+  border: 1px solid lightgray;
+  background-color: #95f9e3;
+  -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+      transition: 0.2s ease-in-out;
+      margin: 5px;
+}
+
+.button:hover {
+  background-color: lightgreen;
+  transition: 0.2s ease-in-out;
 }
 </style>
