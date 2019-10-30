@@ -8,8 +8,19 @@
         </div>
         <router-view />
     </div>
+    <Footer></Footer>
 </div>
 </template>
+
+<script>
+import Footer from './fragments/Footer';
+export default {
+    name: "App",
+    components: {
+        Footer
+    }
+}
+</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
@@ -17,6 +28,7 @@
 
 body {
     background: url(assets/img/wild-sea.png);
+    font-family: 'Roboto', sans-serif;
 }
 
 h1 {
@@ -32,7 +44,6 @@ a {
 
 #app {
     background: rgba(105, 235, 208, 0.8);
-    font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
