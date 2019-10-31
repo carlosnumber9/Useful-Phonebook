@@ -50,8 +50,7 @@ export default {
         async clearDatabase() {
             await axios.get(JSON_SERVER_ADDRESS + '/contacts')
                 .then(response => response.data.map(async contact => {
-                    await axios.delete(JSON_SERVER_ADDRESS + '/contacts/' + contact.id)
-                        .then(response => console.log('Deleted: ' + response));
+                    await axios.delete(JSON_SERVER_ADDRESS + '/contacts/' + contact.id);
                 }));
         },
         addToDatabase(newContacts) {
