@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "concurrently \"vue-cli-service build\" \"npm run persistence\"",
     "lint": "vue-cli-service lint",
     "persistence": "json-server --port 8000 db.json &",
     "phonebook-start": "concurrently \"npm run serve\" \"npm run persistence\""
