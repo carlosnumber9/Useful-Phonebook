@@ -23,7 +23,7 @@ import axios from 'axios';
 import randomGenerator from 'random-profile-generator';
 import ContactContainer from '../fragments/ContactContainer';
 
-const JSON_SERVER_ADDRESS = 'http://localhost:8000';
+const JSON_SERVER_ADDRESS = 'https://my-json-server.typicode.com/carlosnumber9/phonebook-number9';
 const DEFAULT_CONTACT_LIST_SIZE = 5;
 const DEFAULT_ITEMS_PER_PAGE = Math.abs(Math.random() * (0 - 10));
 
