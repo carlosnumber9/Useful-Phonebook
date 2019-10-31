@@ -8,7 +8,7 @@
                 <contactContainer v-bind:contact="contact"> </contactContainer>
             </router-link>
             <div class="new-contact-form">
-              
+
             </div>
         </li>
     </ul>
@@ -41,19 +41,18 @@ export default {
         generateRandomUsers() {
             var i;
             var randomUsers = [];
-            for (i = 0; i < DEFAULT_CONTACT_LIST_SIZE; i++) {
+            const listSize = Math.abs(Math.random() * (0 - 5));
+            for (i = 0; i < listSize; i++) {
                 randomUsers.push(randomGenerator.profile());
             }
             return randomUsers;
         },
         async clearDatabase() {
-            var dbData = [];
             await axios.get(JSON_SERVER_ADDRESS + '/contacts')
-                .then(response => dbData = response.data);
-            dbData.map(async contactToRemove => {
-                await axios.delete(JSON_SERVER_ADDRESS + '/contacts/' + contactToRemove.id)
-                    .then(response => console.log(response));
-            });
+                .then(response => response.data.map(async contact => {
+                    await axios.delete(JSON_SERVER_ADDRESS + '/contacts/' + contact.id)
+                        .then(response => console.log('Deleted: ' + response));
+                }));
         },
         addToDatabase(newContacts) {
             newContacts.map(async newContact => {
@@ -66,16 +65,20 @@ export default {
                 .then(response => dbData = response.data);
             return dbData;
         },
-        async init(generateContacts) {
+        async init() {
             await this.clearDatabase();
-            var newRandomUsers = this.generateRandomUsers();
-            await this.addToDatabase(newRandomUsers);
-            this.contacts = await this.getContacts();
+            this.contacts = this.generateRandomUsers();
+            await this.addToDatabase(this.contacts);
+            this.totalPages = (this.contacts.length > DEFAULT_ITEMS_PER_PAGE) ?
+                Math.ceil(this.contacts.length / DEFAULT_ITEMS_PER_PAGE) :
+                1;
         }
     },
     created: async function () {
         this.contacts = await this.getContacts();
-
+        this.totalPages = (this.contacts.length > DEFAULT_ITEMS_PER_PAGE) ?
+            Math.ceil(this.contacts.length / DEFAULT_ITEMS_PER_PAGE) :
+            1;
     }
 }
 </script>
@@ -109,21 +112,21 @@ a {
 }
 
 .button {
-  display: inline-block;
-  cursor: pointer;
-  color: black;
-  padding: 4px;
-  border: 1px solid lightgray;
-  background-color: #95f9e3;
-  -webkit-border-radius: 8px;
+    display: inline-block;
+    cursor: pointer;
+    color: black;
+    padding: 4px;
+    border: 1px solid lightgray;
+    background-color: #95f9e3;
+    -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-      transition: 0.2s ease-in-out;
-      margin: 5px;
+    transition: 0.2s ease-in-out;
+    margin: 5px;
 }
 
 .button:hover {
-  background-color: lightgreen;
-  transition: 0.2s ease-in-out;
+    background-color: lightgreen;
+    transition: 0.2s ease-in-out;
 }
 </style>

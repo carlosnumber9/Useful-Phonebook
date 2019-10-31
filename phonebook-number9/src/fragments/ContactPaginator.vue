@@ -7,13 +7,16 @@
 <script>
 export default {
     name: "paginator",
-    props: ['totalPages'],
     data() {
         return {
-            pages: Array.from(Array(this.totalPages).keys()).map(function(page) {
-                return ++page;
-            })
+            totalPages: undefined,
+            pages: []
         }
+    },
+    created() {
+        this.pages = Array.from(Array(this.totalPages).keys()).map(function(page) {
+                return ++page;
+            });
     }
 }
 </script>
