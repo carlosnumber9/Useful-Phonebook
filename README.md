@@ -1,4 +1,4 @@
-# Useful-Phonebook
+# Useful Phonebook
 Code test for ShuttleCloud Corp
 
 This is a miniapp used as a code test for Email Meter. To run this app, type in terminal:
