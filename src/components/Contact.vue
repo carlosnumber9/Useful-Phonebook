@@ -1,13 +1,18 @@
 <template>
 <div>
     <div class="wrapper">
-        <img id="avatar" :src="contact.avatar" alt="Avatar" />
-        <h3> {{ contact.fullName }} </h3>
-        <div class="info-container">
-            <span class="phone"> {{ contact.phone }} </span>
+        <div class="no-data-container" v-if="!contact.avatar">
+            <span> No contact data available.</span>
         </div>
-        <div class="info-container">
-            <span class="address"> {{ contact.address }} </span>
+        <div v-if="contact.avatar">
+            <img id="avatar" :src="contact.avatar" alt="Avatar" />
+            <h3> {{ contact.fullName }} </h3>
+            <div class="info-container">
+                <span class="phone"> {{ contact.phone }} </span>
+            </div>
+            <div class="info-container">
+                <span class="address"> {{ contact.address }} </span>
+            </div>
         </div>
     </div>
     <router-link to="/">
@@ -19,6 +24,7 @@
 <script>
 import axios from 'axios';
 
+// const JSON_SERVER_ADDRESS = 'https://my-json-server.typicode.com/carlosnumber9/phonebook-number9';
 const JSON_SERVER_ADDRESS = 'http://localhost:8000';
 
 export default {
@@ -62,5 +68,9 @@ export default {
 
 .back-link {
     color: blue;
+}
+
+.no-data-container {
+    margin: 10px;
 }
 </style>

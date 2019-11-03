@@ -1,15 +1,24 @@
-# Useful Phonebook
-Code test for ShuttleCloud Corp
+# phonebook-number9
 
-This is a miniapp used as a code test for Email Meter. To run this app, type in terminal:
-`
-npm run phonebook-start
-`
+## Project setup
+```
+npm install
+```
 
-It shows two pages:
-- A list with all contacts
-- A detail view with information about a single contact
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-For the contact list data, this app uses a pseudo-persistence based on the NPM package `json-server`, which runs a REST server over a JSON file conceived as a local database.
-Random data will be generated once the user chooses the option in the main page.
+### Compiles and minifies for production
+```
+npm run build
+```
 
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
