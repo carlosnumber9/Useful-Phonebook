@@ -24,8 +24,11 @@
 <script>
 import axios from 'axios';
 
-// const JSON_SERVER_ADDRESS = 'https://my-json-server.typicode.com/carlosnumber9/phonebook-number9';
-const JSON_SERVER_ADDRESS = 'http://localhost:8000';
+// MyJSONServer address - Use for deployment purposes
+const JSON_SERVER_ADDRESS = 'https://my-json-server.typicode.com/carlosnumber9/phonebook-number9';
+
+// Local environment JSON server address - Use for local execution purposes
+// const JSON_SERVER_ADDRESS = 'http://localhost:8000';
 
 export default {
     name: "Contact",
