@@ -1,37 +1,42 @@
 <template>
-<div>
+  <div>
     <div class="wrapper">
-        <div class="no-data-container" v-if="!contact.avatar">
-            <span> No contact data available.</span>
+      <div
+        v-if="!contact.avatar"
+        class="no-data-container"
+      >
+        <span> No contact data available.</span>
+      </div>
+      <div v-if="contact.avatar">
+        <img
+          id="avatar"
+          :src="contact.avatar"
+          alt="Avatar"
+        >
+        <h3> {{ contact.fullName }} </h3>
+        <div class="info-container">
+          <span class="phone"> {{ contact.phone }} </span>
         </div>
-        <div v-if="contact.avatar">
-            <img id="avatar" :src="contact.avatar" alt="Avatar" />
-            <h3> {{ contact.fullName }} </h3>
-            <div class="info-container">
-                <span class="phone"> {{ contact.phone }} </span>
-            </div>
-            <div class="info-container">
-                <span class="address"> {{ contact.address }} </span>
-            </div>
+        <div class="info-container">
+          <span class="address"> {{ contact.address }} </span>
         </div>
+      </div>
     </div>
     <router-link to="/">
-        <h4 class="back-link"> Back to list </h4>
+      <h4 class="back-link">
+        Back to list
+      </h4>
     </router-link>
-</div>
+  </div>
 </template>
 
 <script>
 import axios from 'axios';
 
-// MyJSONServer address - Use for deployment purposes
 const JSON_SERVER_ADDRESS = 'https://my-json-server.typicode.com/carlosnumber9/phonebook-number9';
 
-// Local environment JSON server address - Use for local execution purposes
-// const JSON_SERVER_ADDRESS = 'http://localhost:8000';
-
 export default {
-    name: "Contact",
+    name: "ContactDetail",
     data() {
         return {
             id: this.$route.params.id,

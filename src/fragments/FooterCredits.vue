@@ -1,9 +1,9 @@
 <template>
-    <footer>
-        <span>
-            Carlos Pinedo Sánchez, for ShuttleCorp.
-        </span>
-    </footer>
+  <footer>
+    <span>
+      Carlos Pinedo Sánchez, for ShuttleCorp.
+    </span>
+  </footer>
 </template>
 
 <style scoped>

@@ -1,19 +1,24 @@
 <template>
-    <div class="list">
-        <p class="more-info">Click on a contact to see more info.</p>
-        <ul>
-            <!-- eslint-disable-next-line -->
+  <div class="list">
+    <p class="more-info">
+      Click on a contact to see more info.
+    </p>
+    <ul>
+      <!-- eslint-disable-next-line -->
             <li v-for="contact in contacts">
-                <router-link :to="{ name: 'contact', params: { id: contact.id } }">
-                    <contactContainer v-bind:contact="contact"> </contactContainer>
-                </router-link>
-                <div class="new-contact-form"></div>
-            </li>
-        </ul>
-        <div class="buttons">
-            <a class="button" @click="init"> Generate new random contacts </a>
-        </div>
+        <router-link :to="{ name: 'contact', params: { id: contact.id } }">
+          <contactContainer :contact="contact" />
+        </router-link>
+        <div class="new-contact-form" />
+      </li>
+    </ul>
+    <div class="buttons">
+      <a
+        class="button"
+        @click="init"
+      > Generate new random contacts </a>
     </div>
+  </div>
 </template>
 
 <script>
@@ -37,6 +42,13 @@ export default {
         return {
             contacts: [],
         };
+    },
+    created: async function () {
+        this.contacts = await this.getContacts();
+        this.totalPages =
+            this.contacts.length > DEFAULT_ITEMS_PER_PAGE
+                ? Math.ceil(this.contacts.length / DEFAULT_ITEMS_PER_PAGE)
+                : 1;
     },
     methods: {
         generateRandomUsers() {
@@ -81,13 +93,6 @@ export default {
                     ? Math.ceil(this.contacts.length / DEFAULT_ITEMS_PER_PAGE)
                     : 1;
         },
-    },
-    created: async function () {
-        this.contacts = await this.getContacts();
-        this.totalPages =
-            this.contacts.length > DEFAULT_ITEMS_PER_PAGE
-                ? Math.ceil(this.contacts.length / DEFAULT_ITEMS_PER_PAGE)
-                : 1;
     },
 };
 </script>

@@ -1,24 +1,26 @@
 <template>
-<div id="app-wrap">
+  <div id="app-wrap">
     <div id="app">
-        <div id="nav">
-            <router-link to="/">
-                <h1 id="app-title">PhoneBook</h1>
-            </router-link>
-        </div>
-        <router-view />
+      <div id="nav">
+        <router-link to="/">
+          <h1 id="app-title">
+            PhoneBook
+          </h1>
+        </router-link>
+      </div>
+      <router-view />
     </div>
-    <Footer></Footer>
-</div>
+    <FooterCredits />
+  </div>
 </template>
 
 <script>
-import Footer from './fragments/Footer';
+import FooterCredits from './fragments/FooterCredits';
 export default {
     name: "App",
     components: {
-        Footer
-    }
+        FooterCredits,
+}
 }
 </script>
 
