@@ -1,10 +1,10 @@
 <template>
 <div class="wrapper">
     <div class="pic">
-        <img class="contact-avatar" :src="contact.avatar" :alt="contact.firstName" />
+        <img class="contact-avatar" :src="contact.avatar" :alt="contact.fullName.split(' ')[0]" />
     </div>
     <div class="contact-info">
-        <p class="contact-name"> {{ contact.firstName }} </p>
+        <p class="contact-name"> {{ contact.fullName.split(' ')[0] }} </p>
     </div>
 </div>
 </template>
