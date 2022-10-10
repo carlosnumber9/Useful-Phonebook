@@ -102,7 +102,7 @@ jobs:
           key: ${{ runner.os }}-prepare-${{ env.cache-name }}-${{ github.sha }}
 
       - name: Build dist
-        script: 
+        run: 
           - npm run build
           - mv public public-vue
           - mv dist public
