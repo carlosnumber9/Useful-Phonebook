@@ -102,12 +102,17 @@ jobs:
           key: ${{ runner.os }}-prepare-${{ env.cache-name }}-${{ github.sha }}
 
       - name: Build dist
-        run: 
-          - npm run build
-          - mv public public-vue
-          - mv dist public
-          - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec gzip -f -k {} \;
+        run: npm run build
 
+      - name: Rename public directory
+        run: mv public public-vue
+
+      - name: Rename dist to public
+        run: mv dist public
+
+      - name: Activate GZip support
+        run: find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec gzip -f -k {} \;
+        
       - name: Setup Pages
         uses: actions/configure-pages@v2
 
