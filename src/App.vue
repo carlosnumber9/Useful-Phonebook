@@ -4,7 +4,7 @@
       <div id="nav">
         <router-link :to="{path: home}">
           <h1 id="app-title">
-            PhoneBook
+            phonebook
           </h1>
         </router-link>
       </div>
@@ -47,27 +47,31 @@ a {
 }
 
 #app {
-  background: rgba(105, 235, 208, 0.8);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  max-width: 760px;
-  min-width: 320px;
-  min-height: 480px;
 
-  border: 1px solid white;
-
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   transition: 0.3s ease-in-out;
+}
+
+#app-wrap {
+  background: rgba(105, 235, 208, 0.8);
+
+border: 1px solid white;
+
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
 
 }
 
-#app:hover {
+#app-wrap:hover {
   background: rgba(105, 235, 208, 1);
   transition: 0.3s ease-in-out;
 
