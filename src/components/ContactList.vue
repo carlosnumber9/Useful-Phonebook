@@ -26,12 +26,9 @@ import axios from "axios";
 import { faker } from "@faker-js/faker";
 import ContactContainer from "../fragments/ContactContainer";
 
-// MyJSONServer address - Use for deployment purposes
-const JSON_SERVER_ADDRESS =
-    "https://my-json-server.typicode.com/carlosnumber9/phonebook-number9";
+const JSON_SERVER_ADDRESS = process.env.JSON_SERVER_ADDRESS;
 
-const DEFAULT_CONTACT_LIST_SIZE = 5;
-const DEFAULT_ITEMS_PER_PAGE = Math.abs(Math.random() * (0 - 10));
+const ITEMS_PER_PAGE = Math.abs(Math.random() * (0 - 10));
 
 export default {
     name: "ContactList",
@@ -46,14 +43,14 @@ export default {
     created: async function () {
         this.contacts = await this.getContacts();
         this.totalPages =
-            this.contacts.length > DEFAULT_ITEMS_PER_PAGE
-                ? Math.ceil(this.contacts.length / DEFAULT_ITEMS_PER_PAGE)
+            this.contacts.length > ITEMS_PER_PAGE
+                ? Math.ceil(this.contacts.length / ITEMS_PER_PAGE)
                 : 1;
     },
     methods: {
         generateRandomUsers() {
-            var i;
-            var randomUsers = [];
+            let i;
+            const randomUsers = [];
             const listSize = Math.abs(Math.random() * (0 - 5));
             for (i = 0; i < listSize; i++) {
                 randomUsers.push({
@@ -77,20 +74,16 @@ export default {
                 await axios.post(JSON_SERVER_ADDRESS + "/contacts", newContact);
             });
         },
-        async getContacts() {
-            var dbData;
-            await axios
-                .get(JSON_SERVER_ADDRESS + "/contacts")
-                .then((response) => (dbData = response.data));
-            return dbData;
-        },
-        async init() {
+        getContacts: async () => axios
+            .get(JSON_SERVER_ADDRESS + "/contacts")
+            .then((response) => response.data),
+        init: async () => {
             await this.clearDatabase();
             this.contacts = this.generateRandomUsers();
             await this.addToDatabase(this.contacts);
             this.totalPages =
-                this.contacts.length > DEFAULT_ITEMS_PER_PAGE
-                    ? Math.ceil(this.contacts.length / DEFAULT_ITEMS_PER_PAGE)
+                this.contacts.length > ITEMS_PER_PAGE
+                    ? Math.ceil(this.contacts.length / ITEMS_PER_PAGE)
                     : 1;
         },
     },
