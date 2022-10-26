@@ -6,29 +6,28 @@
     <ul>
       <!-- eslint-disable-next-line -->
             <li v-for="contact in contacts">
-        <router-link :to="{ name: 'contact', params: { id: contact.id } }">
+        <router-link :to="{ name: 'contact', path: contact.id, params: { contact: JSON.stringify(contact) } }">
           <contactContainer :contact="contact" />
         </router-link>
         <div class="new-contact-form" />
       </li>
     </ul>
     <div class="buttons">
-      <a
+      <button
         class="button"
-        @click="init"
-      > Generate new random contacts </a>
+        @click="getRandomUsers()"
+      >
+        Generate new random contacts
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import { faker } from "@faker-js/faker";
 import ContactContainer from "../fragments/ContactContainer";
+import { getNewContacts } from '../utils/Contact';
 
-const JSON_SERVER_ADDRESS = process.env.JSON_SERVER_ADDRESS;
-
-const ITEMS_PER_PAGE = Math.abs(Math.random() * (0 - 10));
+const ITEMS_PER_PAGE = Math.ceil(Math.abs(Math.random() * (5 - 2) + 2));
 
 export default {
     name: "ContactList",
@@ -40,52 +39,19 @@ export default {
             contacts: [],
         };
     },
-    created: async function () {
-        this.contacts = await this.getContacts();
-        this.totalPages =
-            this.contacts.length > ITEMS_PER_PAGE
-                ? Math.ceil(this.contacts.length / ITEMS_PER_PAGE)
-                : 1;
+    created: function () {
+        this.contacts = this.getRandomUsers();
     },
     methods: {
-        generateRandomUsers() {
-            let i;
-            const randomUsers = [];
-            const listSize = Math.abs(Math.random() * (0 - 5));
-            for (i = 0; i < listSize; i++) {
-                randomUsers.push({
-                    phone: faker.phone.number(),
-                    avatar: faker.image.avatar(),
-                    fullName: faker.name.fullName(),
-                    address: `${faker.address.streetAddress()}, ${faker.address.cityName()} ${faker.address.countryCode()}`,
-                });
-            }
-            return randomUsers;
+        getRandomUsers: function () {
+            return getNewContacts(ITEMS_PER_PAGE);
         },
-        async clearDatabase() {
-            await axios.get(JSON_SERVER_ADDRESS + "/contacts").then((response) =>
-                response.data.map(async (contact) => {
-                    await axios.delete(JSON_SERVER_ADDRESS + "/contacts/" + contact.id);
-                })
-            );
-        },
-        addToDatabase(newContacts) {
-            newContacts.map(async (newContact) => {
-                await axios.post(JSON_SERVER_ADDRESS + "/contacts", newContact);
-            });
-        },
-        getContacts: async () => axios
-            .get(JSON_SERVER_ADDRESS + "/contacts")
-            .then((response) => response.data),
-        init: async () => {
-            await this.clearDatabase();
-            this.contacts = this.generateRandomUsers();
-            await this.addToDatabase(this.contacts);
+        updateNumberOfPages: function () {
             this.totalPages =
                 this.contacts.length > ITEMS_PER_PAGE
                     ? Math.ceil(this.contacts.length / ITEMS_PER_PAGE)
                     : 1;
-        },
+        }
     },
 };
 </script>

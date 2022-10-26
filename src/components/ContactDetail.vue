@@ -31,54 +31,48 @@
 </template>
 
 <script>
-import axios from 'axios';
-
-const JSON_SERVER_ADDRESS = 'https://my-json-server.typicode.com/carlosnumber9/phonebook-number9';
-
 export default {
-    name: "ContactDetail",
-    data() {
-        return {
-            id: this.$route.params.id,
-            contact: {}
-        }
-    },
-    created() {
-        axios.get(JSON_SERVER_ADDRESS + '/contacts/?id=' + this.id)
-            .then(response => this.contact = response.data[0]);
+  name: "ContactDetail",
+  data() {
+    return {
+      contact: JSON.parse(this.$route.params.contact)
     }
+  },
+  created() {
+
+  }
 }
 </script>
 
 <style scoped>
 .wrapper {
-    border: 1px solid white;
-    min-height: 250px;
-    min-width: 320px;
-    margin: 20px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    background-color: #95f9e3;
+  border: 1px solid white;
+  min-height: 250px;
+  min-width: 320px;
+  margin: 20px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background-color: #95f9e3;
 }
 
 #avatar {
-    max-width: 100px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    margin: 5px;
+  max-width: 100px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  margin: 5px;
 }
 
 .info-container {
-    margin: 10px;
+  margin: 10px;
 }
 
 .back-link {
-    color: blue;
+  color: blue;
 }
 
 .no-data-container {
-    margin: 10px;
+  margin: 10px;
 }
 </style>

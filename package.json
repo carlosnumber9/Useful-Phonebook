@@ -7,15 +7,12 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
-  "dependencies": {
-    "@vue/cli-plugin-eslint": "^5.0.8",
-    "axios": "^1.1.2"
-  },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
     "@faker-js/faker": "^7.5.0",
     "@vue/babel-preset-app": "^5.0.8",
     "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-eslint": "^5.0.8",
     "@vue/cli-service": "^5.0.8",
     "@vue/eslint-config-standard": "^8.0.1",
     "babel-eslint": "^10.1.0",
@@ -32,12 +29,17 @@
     "vue-template-compiler": "^2.6.10"
   },
   "peerDependencies": {
-    "vue": "^3.2.40"
+    "vue": "^3.2.41"
   },
   "postcss": {
     "plugins": {
       "autoprefixer": {}
     }
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   },
   "browserslist": [
     "> 1%",
