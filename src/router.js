@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import ContactList from './components/ContactList.vue';
 import ContactDetail from './components/ContactDetail';
 
