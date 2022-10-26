@@ -13,14 +13,14 @@ const routes = [
     component: ContactList,
   },
   {
-    path: HOME + 'contact/:contact.id',
+    path: HOME + 'contact/:contactId',
     name: 'contact',
     component: ContactDetail,
   },
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
 });
 

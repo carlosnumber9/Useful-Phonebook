@@ -6,7 +6,9 @@
     <ul>
       <!-- eslint-disable-next-line -->
             <li v-for="contact in contacts">
-        <router-link :to="{ name: 'contact', path: contact.id, params: { contact: JSON.stringify(contact) } }">
+        <router-link
+          :to="{ name: 'contact', path: contact.id, params: { contact: JSON.stringify(contact), contactId: contact.id } }"
+        >
           <contactContainer :contact="contact" />
         </router-link>
         <div class="new-contact-form" />
