@@ -15,7 +15,7 @@
     <div class="buttons">
       <button
         class="button"
-        @click="getRandomUsers()"
+        @click="contacts = getRandomUsers()"
       >
         Generate new random contacts
       </button>
