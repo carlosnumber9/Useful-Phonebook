@@ -43,7 +43,6 @@ export default {
     },
     created: function () {
         this.contacts = this.getRandomUsers();
-        console.debug(process.env);
     },
     methods: {
         getRandomUsers: function () {
