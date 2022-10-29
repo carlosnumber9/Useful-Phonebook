@@ -16,8 +16,6 @@ on:
 
 env:
   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-  NODE_ENV: ${{secrets.NODE_ENV}}
-  CI_PROJECT_NAME: ${{secrets.CI_PROJECT_NAME}}
 
 # Allow one concurrent deployment
 concurrency:
@@ -85,6 +83,10 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+      
+    env:
+      NODE_ENV: ${{secrets.NODE_ENV}}
+      CI_PROJECT_NAME: ${{secrets.CI_PROJECT_NAME}}
 
     runs-on: ubuntu-latest
 
