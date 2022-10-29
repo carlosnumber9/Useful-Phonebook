@@ -16,6 +16,8 @@ on:
 
 env:
   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  NODE_ENV: ${{secrets.NODE_ENV}}
+  CI_PROJECT_NAME: ${{secrets.CI_PROJECT_NAME}}
 
 # Allow one concurrent deployment
 concurrency:
@@ -112,16 +114,6 @@ jobs:
 
       - name: Activate GZip support
         run: find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec gzip -f -k {} \;
-        
-      - name: Setup ENV
-        env:
-         NODE_ENV: ${{ secrets.NODE_ENV }}
-         CI_PROJECT_NAME: ${{ secrets.CI_PROJECT_NAME }}
-        run: |
-         NODE_ENV=$NODE_ENV
-         CI_PROJECT_NAME=$CI_PROJECT_NAME
-         echo $NODE_ENV
-         echo $CI_PROJECT_NAME
         
       - name: Setup Pages
         uses: actions/configure-pages@v2
