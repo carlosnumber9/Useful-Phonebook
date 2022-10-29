@@ -2,7 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 import ContactList from './components/ContactList.vue';
 import ContactDetail from './components/ContactDetail';
 
-export const HOME = '/';
+export const HOME = process.env.NODE_ENV === 'production'
+? '/' + process.env.CI_PROJECT_NAME + '/'
+: '/';
 
 const routes = [
   {
