@@ -114,7 +114,10 @@ jobs:
         run: find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec gzip -f -k {} \;
         
       - name: Setup ENV
-        run: NODE_ENV={{ secrets.NODE_ENV }} && CI_PROJECT_NAME={{ secrets.CI_PROJECT_NAME }}
+        env:
+         NODE_ENV: ${{ secrets.NODE_ENV }}
+         CI_PROJECT_NAME: ${{ secrets.CI_PROJECT_NAME }}
+        run: NODE_ENV="$NODE_ENV" && CI_PROJECT_NAME="$CI_PROJECT_NAME"
         
       - name: Setup Pages
         uses: actions/configure-pages@v2
