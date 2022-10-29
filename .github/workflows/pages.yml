@@ -120,8 +120,8 @@ jobs:
         run: |
          NODE_ENV=$NODE_ENV
          CI_PROJECT_NAME=$CI_PROJECT_NAME
-         echo NODE_ENV
-         echo CI_PROJECT_NAME
+         echo $NODE_ENV
+         echo $CI_PROJECT_NAME
         
       - name: Setup Pages
         uses: actions/configure-pages@v2
