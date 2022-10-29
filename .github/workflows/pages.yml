@@ -117,7 +117,11 @@ jobs:
         env:
          NODE_ENV: ${{ secrets.NODE_ENV }}
          CI_PROJECT_NAME: ${{ secrets.CI_PROJECT_NAME }}
-        run: NODE_ENV="$NODE_ENV" && CI_PROJECT_NAME="$CI_PROJECT_NAME"
+        run: |
+         NODE_ENV=$NODE_ENV
+         CI_PROJECT_NAME=$CI_PROJECT_NAME
+         echo NODE_ENV
+         echo CI_PROJECT_NAME
         
       - name: Setup Pages
         uses: actions/configure-pages@v2
