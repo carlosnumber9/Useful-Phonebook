@@ -114,9 +114,7 @@ jobs:
         run: find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec gzip -f -k {} \;
         
       - name: Setup ENV
-        uses: oNaiPs/secrets-to-env-action@v1
-        with:
-         secrets: ${{ toJSON(secrets) }}
+        run: NODE_ENV={{ secrets.NODE_ENV }} && CI_PROJECT_NAME={{ secrets.CI_PROJECT_NAME }}
         
       - name: Setup Pages
         uses: actions/configure-pages@v2
