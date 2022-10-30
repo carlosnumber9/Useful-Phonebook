@@ -6,8 +6,6 @@ export const HOME = process.env.NODE_ENV === 'production'
 ? '/' + process.env.PROJECT_NAME + '/'
 : '/';
 
-console.debug(`NODE_ENV:  ${process.env.NODE_ENV}`);
-console.debug(`PROJECT_NAME:  ${process.env.PROJECT_NAME}`);
 console.debug(process.env);
 
 const routes = [
