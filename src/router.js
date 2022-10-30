@@ -3,7 +3,7 @@ import ContactList from './components/ContactList.vue';
 import ContactDetail from './components/ContactDetail';
 
 export const HOME = process.env.NODE_ENV === 'production'
-? '/phonebook-number9/'
+? '/' + process.env.CI_PROJECT_NAME + '/'
 : '/';
 
 const routes = [
