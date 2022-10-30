@@ -86,7 +86,7 @@ jobs:
       
     env:
       NODE_ENV: ${{secrets.NODE_ENV}}
-      CI_PROJECT_NAME: ${{secrets.CI_PROJECT_NAME}}
+      PROJECT_NAME: ${{secrets.PROJECT_NAME}}
 
     runs-on: ubuntu-latest
 
