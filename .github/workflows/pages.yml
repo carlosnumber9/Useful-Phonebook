@@ -16,6 +16,7 @@ on:
 
 env:
   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  VUE_APP_PROJECT_NAME: ${{secrets.VUE_APP_PROJECT_NAME}}
 
 # Allow one concurrent deployment
 concurrency:
@@ -100,6 +101,9 @@ jobs:
             **/node_modules
             ~/.npm
           key: ${{ runner.os }}-prepare-${{ env.cache-name }}-${{ github.sha }}
+          
+      - name: Set ENV
+        run: echo "VUE_APP_PROJECT_NAME=$VUE_APP_PROJECT_NAME" >> .env
 
       - name: Build dist
         run: npm run build
