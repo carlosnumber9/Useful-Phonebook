@@ -8,7 +8,7 @@ export const HOME = process.env.NODE_ENV === 'production'
 
 console.debug(`NODE_ENV:  ${process.env.NODE_ENV}`);
 console.debug(`PROJECT_NAME:  ${process.env.PROJECT_NAME}`);
-console.debug(`env:  ${process.env}`);
+console.debug(process.env);
 
 const routes = [
   {
