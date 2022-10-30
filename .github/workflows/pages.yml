@@ -109,9 +109,6 @@ jobs:
 
       - name: Rename dist to public
         run: mv dist public
-        
-      - name: Set ENV
-        run: echo "PROJECT_NAME=$PROJECT_NAME" >> ./public/.env
 
       - name: Activate GZip support
         run: find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec gzip -f -k {} \;

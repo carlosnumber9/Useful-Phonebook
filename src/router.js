@@ -3,7 +3,7 @@ import ContactList from './components/ContactList.vue';
 import ContactDetail from './components/ContactDetail';
 
 export const HOME = process.env.NODE_ENV === 'production'
-? '/' + process.env.PROJECT_NAME + '/'
+? '/' + process.env.VUE_APP_PROJECT_NAME + '/'
 : '/';
 
 console.debug(process.env);
