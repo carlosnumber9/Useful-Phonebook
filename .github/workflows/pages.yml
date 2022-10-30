@@ -100,11 +100,6 @@ jobs:
             **/node_modules
             ~/.npm
           key: ${{ runner.os }}-prepare-${{ env.cache-name }}-${{ github.sha }}
-        
-      - name: Set ENV
-        uses: oNaiPs/secrets-to-env-action@v1
-        with:
-          secrets: ${{ toJSON(secrets) }}
 
       - name: Build dist
         run: npm run build
@@ -114,6 +109,9 @@ jobs:
 
       - name: Rename dist to public
         run: mv dist public
+        
+      - name: Set ENV
+        run: echo "PROJECT_NAME=$PROJECT_NAME" >> dist/.env
 
       - name: Activate GZip support
         run: find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec gzip -f -k {} \;
